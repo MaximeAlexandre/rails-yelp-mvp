@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row justify-content-center mt-5">
+    <div class="col-12 col-lg-6 bg-white border d-flex flex-column align-items-left pt-2">
+      <h1 class="mb-5">
+        Restaurant details
+        <small>
+          <%= link_to restaurants_path do %><i class="fa fa-arrow-circle-left ml-4"></i><% end %>
+        </small>
+      </h1>
+
+
+      <h2>
+        <%= @restaurant.name %>
+      </h2>
+      <p>Address : <%= @restaurant.address %></p>
+      <p>Category : <%= @restaurant.category %></p>
+      <div class="border-top border-left border-right pt-4 pl-4">
+        <h3>Reviews :</h3>
+          <% @restaurant.reviews.each do |review| %>
+            <p class=""><%= review.content %> | Rate : <%= review.rating %></p>
+          <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row justify-content-center mt-5">
+    <div class="col-12 col-lg-6 bg-white border d-flex flex-column align-items-center p-4">
+      <%= simple_form_for([@restaurant, @review]) do |f| %>
+        <%= f.input :content, :input_html => {:style=> 'width: 400px'} %>
+        <%= f.input :rating, collection: Review::RATING %>
+
+        <%= f.submit %>
+      <% end %>
+    </div>
+  </div>
+</div>

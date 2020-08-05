@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row justify-content-center mt-5">
+    <div class="col-12 col-lg-6 bg-white border d-flex flex-column align-items-center p-4">
+      <%= simple_form_for(@restaurant) do |f| %>
+        <%= f.input :name, :input_html => {:style=> 'width: 400px'} %>
+        <%= f.input :address %>
+        <%= f.input :category, collection: Restaurant::CATEGORIES %>
+
+        <%= f.submit %>
+      <% end %>
+    </div>
+  </div>
+</div>

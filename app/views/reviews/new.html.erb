@@ -1,0 +1,10 @@
+<div class="row justify-content-center mt-5">
+  <div class="col-12 col-lg-6 bg-white border d-flex flex-column align-items-center p-4">
+    <%= simple_form_for([@restaurant, @review]) do |f| %>
+      <%= f.input :content, :input_html => {:style=> 'width: 400px'} %>
+      <%= f.input :rating, collection: Review::RATING %>
+
+      <%= f.submit %>
+    <% end %>
+  </div>
+</div>
